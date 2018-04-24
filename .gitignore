@@ -22,3 +22,5 @@ cabal.sandbox.config
 .stack-work/
 .ghc-tmp/
 tags
+
+coq-out/

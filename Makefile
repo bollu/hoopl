@@ -58,10 +58,12 @@ SRC_FILES=./src/Compiler/Hoopl/Block.hs \
 		  ./src/Compiler/Hoopl/Passes/Dominator.hs \
 		  ./src/Compiler/Hoopl/Haddock.hs
 
+OUTDIR=coq-out
+
 all:
 	mkdir -p out
 	hs-to-coq  -e edits  \
 		-e /home/bollu/work/hs-to-coq/base/edits \
 		--iface-dir  /home/bollu/work/hs-to-coq/base/ \
-		--iface-dir out/ \
-		$(SRC_FILES) -o out
+		--iface-dir $(OUTDIR)/ \
+		$(SRC_FILES) -o $(OUTDIR)
