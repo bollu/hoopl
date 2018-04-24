@@ -1,3 +1,4 @@
+coqout/
 .*.swp
 *.bak
 *~
@@ -17,3 +18,7 @@ cabal.sandbox.config
 
 # Coverage reports
 *.tix
+
+.stack-work/
+.ghc-tmp/
+tags
