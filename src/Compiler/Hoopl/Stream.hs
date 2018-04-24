@@ -8,7 +8,7 @@ where
 
 import Control.Monad
 
---import Test.QuickCheck
+import Test.QuickCheck
 
 type Stream s a = s -> Maybe (Pair s a)
 data Pair s a = Pair a (Stream s a)
@@ -16,9 +16,9 @@ data Pair s a = Pair a (Stream s a)
 instance Show (s -> Maybe (Pair s a)) where
   show _ = "<function>"
 
--- instance (Arbitrary a, Arbitrary s, CoArbitrary s) => Arbitrary (Pair s a) where
---   arbitrary = liftM2 Pair arbitrary arbitrary
---   shrink (Pair a f) = [Pair a' f' | a' <- shrink a, f' <- shrink f] 
+instance (Arbitrary a, Arbitrary s, CoArbitrary s) => Arbitrary (Pair s a) where
+  arbitrary = liftM2 Pair arbitrary arbitrary
+  shrink (Pair a f) = [Pair a' f' | a' <- shrink a, f' <- shrink f] 
 
 emptyS :: Stream s a
 emptyS = const Nothing

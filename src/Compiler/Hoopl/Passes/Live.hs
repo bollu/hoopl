@@ -56,7 +56,8 @@ liveLattice = addTop lat
         lat = DataflowLattice
                 { fact_name       = "Live variables"
                 , fact_bot        = empty
-                , fact_join       = add
+                , fact_extend     = add
+                , fact_do_logging = False
                 }
         empty :: VarSet n
         empty = (emptyVarSet :: VarSet n)
