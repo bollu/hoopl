@@ -27,8 +27,8 @@ OUTDIR=`pwd`
 
 all: gencoq gencoq Makefile.coq
 
+# generate coq from haskell files
 gencoq:
-	mkdir -p out
 	hs-to-coq  -e ../edits  \
 		-e /home/bollu/work/hs-to-coq/base/edits \
 		--iface-dir  /home/bollu/work/hs-to-coq/base/ \
@@ -37,8 +37,10 @@ gencoq:
 
 
 
-genMakefile.coq:
+# create the Makefile.coq required to build the coq proof of Hoopl
+Makefile.coq:
 	coq_makefile -f _CoqProject -o Makefile.coq
 
-buildcoq:
+# build the coq proof
+buildcoq: Makefile.coq
 	make -f Makefile.coq
