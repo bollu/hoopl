@@ -18,10 +18,14 @@ SRC_FILES=./src/Compiler/Hoopl/Block.hs \
 		  ./src/Compiler/Hoopl/XUtil.hs \
 		  ./src/Compiler/Hoopl/Debug.hs \
 		  ./src/Compiler/Hoopl.hs \
-		  ./src/Compiler/Hoopl/Passes/Dominator.hs \
-		  ./src/Compiler/Hoopl/Haddock.hs
+		  ./src/Compiler/Hoopl/Passes/Dominator.hs
+
+# ./src/Compiler/Hoopl/Haddock.hs
+
 
 OUTDIR=coq-out
+
+all: gencoq gencoq Makefile.coq
 
 gencoq:
 	mkdir -p out
@@ -30,12 +34,14 @@ gencoq:
 		--iface-dir  /home/bollu/work/hs-to-coq/base/ \
 		--iface-dir $(OUTDIR)/ \
 		$(SRC_FILES) -o $(OUTDIR)
+
+
+
+Makefile.coq:
 	cp _CoqProject coq-out/
-
-
-
-Makefile.coq: coq-out/_CoqProject
-	coq_makefile -f coq-out/_CoqProject -o coq-out/Makefile.coq
+	cd coq-out
+	# cwd: ./coq-out/
+	coq_makefile -f _CoqProject -o Makefile
 
 
 

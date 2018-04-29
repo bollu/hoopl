@@ -1,6 +1,5 @@
 -Q /home/bollu/work/hs-to-coq/base ""
 -Q . ""
-Haddock.v
 Compiler/Hoopl.v
 Compiler/Hoopl/Block.v
 Compiler/Hoopl/Checkpoint.v
